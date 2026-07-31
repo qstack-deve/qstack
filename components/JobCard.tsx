@@ -386,7 +386,7 @@ export function JobCard({ job }: JobCardProps) {
 
       {/* Bottom accent line */}
       <div
-        className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-chart-1 to-chart-2 transition-transform duration-500 ${
+        className={`absolute bottom-0 left-0 right-0 h-1 bg-primary transition-transform duration-500 ${
           isExpanded ? "scale-x-100" : "scale-x-0"
         } origin-left`}
       />

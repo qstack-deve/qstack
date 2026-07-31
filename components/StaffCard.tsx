@@ -71,29 +71,20 @@ export function StaffCard({ member, className }: StaffCardProps) {
     <Link href={`/staff/${member.slug}`}>
       <Card
         className={cn(
-          "group relative overflow-hidden p-0 border-0",
-          "bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800",
-          "hover:shadow-2xl hover:shadow-primary/10 dark:hover:shadow-primary/5",
-          "transition-all duration-500 ease-out",
-          "hover:-translate-y-2 hover:scale-[1.02]",
+          "group relative overflow-hidden p-0 border bg-card",
+          "hover:shadow-xl hover:border-primary/40",
+          "transition-all duration-300 ease-out",
+          "hover:-translate-y-1.5",
           "cursor-pointer",
           className,
         )}
       >
-        {/* Gradient overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        {/* Glassmorphism accent */}
-        <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors duration-500" />
-        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-chart-2/10 rounded-full blur-3xl group-hover:bg-chart-2/20 transition-colors duration-500" />
-
         <div className="relative z-10 p-8 flex flex-col items-center text-center">
-          {/* Avatar with ring effect */}
+          {/* Avatar */}
           <div className="relative mb-6">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-chart-1 to-chart-2 blur-md opacity-50 group-hover:opacity-80 transition-opacity duration-500 scale-110" />
-            <Avatar className="relative size-28 ring-4 ring-background shadow-xl">
+            <Avatar className="relative size-28 ring-4 ring-background shadow-lg">
               <AvatarImage src={member.avatar} alt={member.full_name} />
-              <AvatarFallback className="text-2xl font-bold bg-gradient-to-br from-primary to-chart-2 text-primary-foreground">
+              <AvatarFallback className="text-2xl font-bold bg-primary text-primary-foreground">
                 {member.full_name
                   .split(" ")
                   .map((n) => n[0])
@@ -125,7 +116,7 @@ export function StaffCard({ member, className }: StaffCardProps) {
                   e.preventDefault();
                   window.location.href = `mailto:${member.email}`;
                 }}
-                className="p-2 rounded-full bg-background/80 hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-sm hover:shadow-md hover:scale-110"
+                className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-xs hover:scale-105"
               >
                 <Mail className="size-4" />
               </span>
@@ -138,7 +129,7 @@ export function StaffCard({ member, className }: StaffCardProps) {
                   window.open(social.url, "_blank");
                 }}
                 className={cn(
-                  "p-2 rounded-full bg-background/80 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-110",
+                  "p-2 rounded-full bg-muted transition-all duration-300 shadow-xs hover:scale-105",
                   getSocialStyle(social.platform),
                 )}
               >
@@ -149,7 +140,7 @@ export function StaffCard({ member, className }: StaffCardProps) {
         </div>
 
         {/* Bottom accent line */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-chart-1 to-chart-2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
       </Card>
     </Link>
   );

@@ -66,18 +66,18 @@ export default async function StaffDetailPage({ params }: PageProps) {
         </Link>
 
         {/* Profile Header */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-8 md:p-12 mb-12">
-          {/* Accent decorations */}
-          <div className="absolute -top-20 -right-20 w-60 h-60 bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-chart-2/10 rounded-full blur-3xl" />
-
+        <div className="relative overflow-hidden rounded-3xl border bg-card p-8 md:p-12 mb-12">
           <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-8">
             {/* Large Avatar */}
             <div className="relative flex-shrink-0">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-chart-1 to-chart-2 blur-lg opacity-60 scale-110" />
-              <Avatar className="relative size-40 md:size-48 ring-4 ring-background shadow-2xl">
+              <Avatar className="relative size-40 md:size-48 ring-4 ring-background shadow-xl">
                 <AvatarImage src={member.avatar} alt={member.full_name} />
-                <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-primary to-chart-2 text-primary-foreground"></AvatarFallback>
+                <AvatarFallback className="text-4xl font-bold bg-primary text-primary-foreground">
+                  {member.full_name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
+                </AvatarFallback>
               </Avatar>
             </div>
 
@@ -91,12 +91,11 @@ export default async function StaffDetailPage({ params }: PageProps) {
               </span>
 
               {/* Social Links */}
-              {/* Social Links */}
               <div className="flex items-center justify-center md:justify-start gap-3 mt-6">
                 {member.email && (
                   <a
                     href={`mailto:${member.email}`}
-                    className="p-3 rounded-full bg-background/80 hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-110"
+                    className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-xs hover:scale-105"
                   >
                     <Mail className="size-5" />
                   </a>
@@ -126,7 +125,7 @@ export default async function StaffDetailPage({ params }: PageProps) {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-3 rounded-full bg-background/80 transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-110 ${hoverClass}`}
+                      className={`p-3 rounded-full bg-muted transition-all duration-300 shadow-xs hover:scale-105 ${hoverClass}`}
                     >
                       <Icon className="size-5" />
                     </a>
@@ -157,7 +156,7 @@ export default async function StaffDetailPage({ params }: PageProps) {
                 {member.skills?.map((skill) => (
                   <span
                     key={skill.id}
-                    className="px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-primary/10 to-chart-2/10 text-foreground border border-primary/20 hover:border-primary/40 transition-colors"
+                    className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20"
                   >
                     {skill.name}
                   </span>
